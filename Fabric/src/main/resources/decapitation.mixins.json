@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "lilypuree.decapitation.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "MobMixin"
+
+
+  ],
+  "client": [
+    "HumanoidModelMixin",
+    "QuadrupedModelMixin",
+    "VillagerModelMixin",
+    "CreeperModelMixin",
+    "ChickenModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+  

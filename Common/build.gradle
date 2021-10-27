@@ -1,6 +1,16 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    }
+}
 plugins {
     id('java')
     id('org.spongepowered.gradle.vanilla') version '0.2.1-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
 }
 
 archivesBaseName = "${mod_name}-common-${minecraft_version}"
@@ -21,5 +31,7 @@ minecraft {
 }
 
 dependencies {
-     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.4'
+//    implementation "org.spongepowered:mixin:0.8.4"
+
+    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.4'
 }
