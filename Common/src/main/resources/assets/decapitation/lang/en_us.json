@@ -1,0 +1,6 @@
+{
+  "text.autoconfig.decapitation.option.disablePassive" : "Disable Passive Mob Decapitation",
+  "text.autoconfig.decapitation.option.chance" : "Decapitation Chance",
+  "text.autoconfig.decapitation.option.blacklist" : "Blacklisted Mobs",
+  "text.autoconfig.decapitation.title" : "Decapitation Configs"
+}

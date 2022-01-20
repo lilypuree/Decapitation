@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[37,)"
+loaderVersion="[38,)"
 license="MIT"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 
@@ -9,7 +9,7 @@ version="${file.jarVersion}" #mandatory
 displayName="Decapitated" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
-#logoFile="multiloader.png" #optional
+logoFile="logo.png" #optional
 
 credits="Jared for the multiloader framework" #optional
 authors="Lilypuree" #optional
@@ -20,12 +20,12 @@ adds decapitated mobs
 [[dependencies.decapitation]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[37,)" #mandatory
+    versionRange="[38,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[dependencies.decapitation]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.18,)"
     ordering="NONE"
     side="BOTH"

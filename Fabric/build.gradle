@@ -1,17 +1,36 @@
 plugins {
-    id 'fabric-loom' version '0.9-SNAPSHOT'
+    id 'fabric-loom' version '0.10-SNAPSHOT'
     id 'maven-publish'
     id 'idea'
+}
+repositories {
+    maven {
+        name = 'ParchmentMC'
+        url = 'https://maven.parchmentmc.org'
+    }
+    maven { url "https://maven.shedaniel.me/" }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.officialMojangMappings()
+    mappings loom.layered() {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchment_version}")
+    }
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation project(":Common")
+
+    modApi "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+    modImplementation "curse.maven:modmenu-308702:3570652"
 }
 
 loom {
@@ -20,13 +39,13 @@ loom {
             client()
             setConfigName("Fabric Client")
             ideConfigGenerated(true)
-            runDir("${this.name}/run")
+            runDir("run")
         }
         server {
             server()
             setConfigName("Fabric Server")
             ideConfigGenerated(true)
-            runDir("${this.name}/run")
+            runDir("run")
         }
     }
 }
@@ -40,7 +59,14 @@ processResources {
         expand "version": project.version
     }
 }
+processResources {
+    from project(":Common").sourceSets.main.resources
+    inputs.property "version", project.version
 
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
 tasks.withType(JavaCompile) {
     source(project(":Common").sourceSets.main.allSource)
 }
@@ -54,15 +80,16 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            from components.java
         }
     }
 
     repositories {
+        maven {
+            url "file://" + System.getenv("local_maven")
+        }
     }
 }

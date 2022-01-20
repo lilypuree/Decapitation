@@ -7,15 +7,17 @@
   "authors": [
     "Lilypuree"
   ],
+  "logo" : "logo.png",
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
   "license": "MIT",
   "environment": "*",
   "entrypoints": {
     "main": [
       "lilypuree.decapitation_fabric.DecaptMod"
+    ],
+    "modmenu": [
+      "lilypuree.decapitation_fabric.ModMenuIntegration"
     ]
   },
   "mixins": [{
@@ -23,10 +25,10 @@
       "environment": "*"
     }],
   "depends": {
-    "fabricloader": ">=0.11.3",
+    "fabricloader": ">=0.12.2",
     "fabric": "*",
-    "minecraft": "1.17.x",
-    "java": ">=16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   }
 }
   

@@ -13,5 +13,6 @@ public class Constants {
 	public static final String MOD_NAME = "Decapitation";
 	public static final Logger LOG = LogManager.getLogger(MOD_NAME);
     
-    public static float HEADLESS_CHANCE = 0.25f;
+//    public static float HEADLESS_CHANCE = 0.25f;
+	public static CommonConfig config;
 }
